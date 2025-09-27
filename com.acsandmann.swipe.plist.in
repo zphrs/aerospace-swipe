@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
     <key>Label</key>
@@ -7,23 +7,24 @@
 
     <key>ProgramArguments</key>
     <array>
-      <string>@TARGET_PATH@</string>
+      <string>/usr/bin/open</string>
+      <string>-g</string>
+      <string>@BUNDLE_PATH@</string>
     </array>
-
     <key>RunAtLoad</key>
-    <true/>
+    <true />
 
     <key>KeepAlive</key>
-    <true/>
+    <true />
 
-	<key>LimitLoadToSessionType</key>
-	<string>Aqua</string>
+    <key>LimitLoadToSessionType</key>
+    <string>Aqua</string>
 
-	<key>ProcessType</key>
+    <key>ProcessType</key>
     <string>Interactive</string>
 
     <key>Nice</key>
-	<integer>0</integer>
+    <integer>0</integer>
 
     <key>StandardOutPath</key>
     <string>/tmp/swipe.out</string>
