@@ -17,6 +17,7 @@ APP_CONTENTS = $(APP_BUNDLE)/Contents
 APP_MACOS = $(APP_CONTENTS)/MacOS
 INFO_PLIST = $(APP_CONTENTS)/Info.plist
 
+ABS_TARGET_PATH = $(shell pwd)/$(APP_MACOS)/$(BINARY_NAME)
 BUNDLE_PATH = $(shell pwd)/$(APP_BUNDLE)
 
 .PHONY: all clean sign install_plist load_plist uninstall_plist install uninstall
@@ -66,7 +67,7 @@ sign: $(TARGET)
 install_plist:
 	@echo "Generating launch agent plist with binary path $(BUNDLE_PATH)..."
 	mkdir -p $(LAUNCH_AGENTS_DIR)
-	sed "s|@BUNDLE_PATH@|$(BUNDLE_PATH)|g" $(PLIST_TEMPLATE) > $(LAUNCH_AGENTS_DIR)/$(PLIST_FILE)
+	sed "s|@TARGET_PATH@|$(ABS_TARGET_PATH)|g; s|@BUNDLE_PATH@|$(BUNDLE_PATH)|g" $(PLIST_TEMPLATE) > $(LAUNCH_AGENTS_DIR)/$(PLIST_FILE)
 	@echo "Launch agent plist installed to $(LAUNCH_AGENTS_DIR)/$(PLIST_FILE)"
 
 load_plist:
